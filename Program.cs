@@ -8,33 +8,91 @@ namespace deliverable1
 {
     class Program
     {
-        /* I should've stayed at GC last night. I haven't been able to get this to work
-           I'll continue to work on this after submission, but this is what I have so far */
-        public static (string, string) Prompt()
+        public static string Prompt1()
         {
-            string firstNumber, secondNumber;
-
             Console.WriteLine("Please enter an integer");
-            firstNumber = Console.ReadLine();
-
-            Console.WriteLine("Please enter another integer with the same number of digits");
-            secondNumber = Console.ReadLine();
-
-            return (firstNumber, secondNumber);
+            string x = Console.ReadLine();
+            return x;
         }
 
-        public static string Test(int x, int y)
+        public static string Prompt2()
+        {
+            Console.WriteLine("Please enter another integer with the same number of digits");
+            string y = Console.ReadLine();
+            return y;
+        }
+       
+            /* ignore >>>>>>>>>>>
+             * int b = y.Length;
+
+        int a = x.Length;
+            if(a == b)
+            {
+                return (x, y);
+            }
+            else
+            {
+                Console.WriteLine("Sorry! Try again!");
+                x = "";
+                y = "a";
+                Prompt(x, y);
+                return (x, y);
+            }*/
+ // Prompt in 2 methods for two separate strings. Compare length with 3rd method?
+
+        static void Main(string[] args)
+        {
+            string firstInt = Prompt1();
+            string secondInt = Prompt2();
+            
+            if (firstInt.Length == secondInt.Length)
+            {
+                int[] int1 = new int[firstInt.Length];
+                int[] int2 = new int[secondInt.Length];
+                for (int c = 0; c <= firstInt.Length; c++)
+                {
+                    int1[c] = Convert.ToInt32(firstInt[c]);
+                    int2[c] = Convert.ToInt32(secondInt[c]);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Sorry! Try again!");
+                /* recursive call method to compare string.length*/
+            }
+            /*int[] p = new int[firstNumber.Length]; // reminder!
+            int[] q = new int[secondNumber.Length];
+            for (int i = 0; i < firstNumber.Length; i++)
+            {
+                p[i] = firstNumber[i] - '0';
+                q[i] = secondNumber[i] - '0';
+                Console.WriteLine(p[i] + " " + q[i]);
+            }*/
+        }
+
+
+
+
+        // ignore the rest of this?
+
+            /*if (int.TryParse(firstNumber, out int number1) && int.TryParse(secondNumber, out int number2))
+            {
+                number1 = Convert.ToInt32(firstNumber);
+                number2 = Convert.ToInt32(secondNumber);
+                Console.WriteLine(Test(number1, number2));
+            }*/
+
+
+            /*public static string Test(int x, int y)
         {
             string stringX = x.ToString();
             string stringY = y.ToString();
-            int[] NumbersX = new int[stringX.ToString().Length];
-            int[] NumbersY = new int[stringY.ToString().Length];
+            int[] NumbersX = new int[stringX.Length];
+            int[] NumbersY = new int[stringY.Length];
             int[] Adding = { 0 };
             string TorF = "";
 
-#pragma warning disable CS0162 // Unreachable code detected
-            for (int i = -1; i < NumbersX.Length; i++) // I don't quite understand what's making code unreachable. Will figure it out
-#pragma warning restore CS0162 // Unreachable code detected
+            for (int i = -1; i < NumbersX.Length; i++)
             {
                 NumbersX[i+1] = Convert.ToInt32(stringX[i+1]); 
                 NumbersY[i+1] = Convert.ToInt32(stringX[i+1]);
@@ -42,37 +100,15 @@ namespace deliverable1
                 if (Adding[i+1] != Adding[i])
                 {
                     TorF = "false";
-                    return TorF;
                 }
                 else
                 {
                     TorF = "true";
-                    return TorF;
                 }
 
             }
             return TorF;
 
-        }
-
-        static void Main(string[] args)
-        {
-            string firstNumber, secondNumber;
-            firstNumber = "";
-            secondNumber = "";
-            Prompt();
-
-            while(firstNumber.Length != secondNumber.Length)
-            {
-                Console.WriteLine("Sorry! Try again!");
-                Prompt();
-            }
-            if (int.TryParse(firstNumber, out int number1) && int.TryParse(secondNumber, out int number2))
-            {
-                number1 = Convert.ToInt32(firstNumber);
-                number2 = Convert.ToInt32(secondNumber);
-                Console.WriteLine(Test(number1, number2));
-            }
-        }
+        }*/
     }
 }
