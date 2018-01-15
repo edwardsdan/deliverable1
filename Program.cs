@@ -21,42 +21,54 @@ namespace deliverable1
             string y = Console.ReadLine();
             return y;
         }
-       
-           
- // Prompt in 2 methods for two separate strings. Compare length with 3rd method?
+
+        public static bool Task(string x, string y)
+        {
+// converts strings to intarrays
+            char[] One = x.ToCharArray();
+            char[] Two = y.ToCharArray();
+
+            int[] A = One.Select(a => a - '0').ToArray();
+            int[] B = Two.Select(a => a - '0').ToArray();
+
+// compares sums of A and B, writes to console whether all sums are equal
+            bool TorF = true;
+            int[] C = new int[A.Length];
+            int i = 0;
+
+            while (i < C.Length)
+            {
+                C[i] = x[i] + y[i];
+                if (C[0] != C[i])
+                {
+                    i = C.Length;
+                    TorF = false;
+                }
+                else
+                {
+                    TorF = true;
+                    i++;
+                }
+            }
+            Console.WriteLine(TorF);
+            return TorF;
+        }
 
         static void Main(string[] args)
         {
+// prompts user for integers
             string firstInt = Prompt1();
             string secondInt = Prompt2();
 
+// checks length of integers and prompts again if not same length
             if (firstInt.Length == secondInt.Length)
             {
-                char[] One = firstInt.ToCharArray();
-                char[] Two = secondInt.ToCharArray();
-
-                int[] A = One.Select(a => a - '0').ToArray(); // figure out what 'a' represents ***************
-                int[] B = Two.Select(a => a - '0').ToArray(); // pretty sure this uses Linq, learn more
-                int[] C = new int[A.Length];
-                
-                for (int i = 0; i < C.Length; i++)
-                {
-                    C[i] = A[i] + B[i];
-                    if (C[i] == C[0])
-                    {
-                        Console.WriteLine("True");
-                    }
-                    else
-                    {
-                        Console.WriteLine("False");
-                    }
-                }
+                Task(firstInt, secondInt);
             }
             else
             {
                 Console.WriteLine("Sorry! Try again!");
                 Main(args);
-                // recursive call method to compare string.length
             }
         }
     }
