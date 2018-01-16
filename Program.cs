@@ -59,17 +59,28 @@ namespace deliverable1
 // prompts user for integers
             string firstInt = Prompt1();
             string secondInt = Prompt2();
+            int first;
+            int second;
 
-// checks length of integers and prompts again if not same length
-            if (firstInt.Length == secondInt.Length)
+// checks if inputs are integers, lengths of inputs, and prompts again if neither are true
+            if (Int32.TryParse(firstInt, out first) == true && Int32.TryParse(secondInt, out second) == true)
             {
-                Task(firstInt, secondInt);
+                if (firstInt.Length == secondInt.Length)
+                {
+                    Task(firstInt, secondInt);
+                }
+                else
+                {
+                    Console.WriteLine("Sorry! Try again!");
+                    Main(args);
+                }
             }
             else
             {
                 Console.WriteLine("Sorry! Try again!");
                 Main(args);
             }
+            
         }
     }
 }
